@@ -1,0 +1,28 @@
+# Streamlit Framework
+streamlit==1.24.0
+
+# Datenmanipulation und -analyse
+pandas==2.0.3
+numpy==1.24.3
+
+# Visualisierung
+matplotlib==3.8.0
+plotly==5.15.0
+
+# Machine Learning und AutoML
+scikit-learn==1.3.0
+autogluon==0.8.2
+
+# Berichterstellung
+fpdf==1.7.2
+openpyxl==3.1.2
+
+# Leistung und Caching
+cachetools==5.3.1
+joblib==1.3.1
+
+# Datum- und Zeitmanagement
+python-dateutil==2.8.2
+
+# Streamlit Add-ons
+streamlit-aggrid==0.3.5
