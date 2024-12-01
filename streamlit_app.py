@@ -119,4 +119,3 @@ elif menu == "Prognosen":
         # Beispiel: Einbindung eines AutoML-Modells
         prediction_data["Gesamtprozentsatz"] = prediction_data["Gesamtprozentsatz"] * 1.05  # Platzhalter
         plot_prediction_chart(prediction_data)
-      
