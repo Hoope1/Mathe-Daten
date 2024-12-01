@@ -1,8 +1,9 @@
 import pandas as pd
-from utils.cache import cache_data
 import datetime
+from streamlit.runtime.caching import cache_data
 
 
+@cache_data(ttl=3600)
 def load_participants(file_path: str) -> pd.DataFrame:
     """
     Lädt die Teilnehmerdaten aus einer CSV-Datei und cached sie.
@@ -13,16 +14,14 @@ def load_participants(file_path: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Teilnehmerdaten als DataFrame.
     """
-    def loader():
-        data = pd.read_csv(file_path)
-        data["Eintrittsdatum"] = pd.to_datetime(data["Eintrittsdatum"])
-        data["Austrittsdatum"] = pd.to_datetime(data["Austrittsdatum"])
-        data["Aktiv"] = data["Austrittsdatum"] > datetime.date.today()
-        return data
-
-    return cache_data(loader)
+    data = pd.read_csv(file_path)
+    data["Eintrittsdatum"] = pd.to_datetime(data["Eintrittsdatum"])
+    data["Austrittsdatum"] = pd.to_datetime(data["Austrittsdatum"])
+    data["Aktiv"] = data["Austrittsdatum"] > datetime.date.today()
+    return data
 
 
+@cache_data(ttl=3600)
 def load_tests(file_path: str) -> pd.DataFrame:
     """
     Lädt die Testdaten aus einer CSV-Datei und cached sie.
@@ -33,12 +32,9 @@ def load_tests(file_path: str) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Testdaten als DataFrame.
     """
-    def loader():
-        data = pd.read_csv(file_path)
-        data["Testdatum"] = pd.to_datetime(data["Testdatum"])
-        return data
-
-    return cache_data(loader)
+    data = pd.read_csv(file_path)
+    data["Testdatum"] = pd.to_datetime(data["Testdatum"])
+    return data
 
 
 def save_data(data: pd.DataFrame, file_path: str) -> None:
