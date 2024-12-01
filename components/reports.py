@@ -142,4 +142,3 @@ def download_reports(participant_data: dict, progress_data: pd.DataFrame, stats:
         file_name=f"{participant_data['name']}_Bericht.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     )
-  
