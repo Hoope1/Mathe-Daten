@@ -84,4 +84,3 @@ def plot_prediction_chart(predicted_data: pd.DataFrame, title: str = "Prognose Ã
     plt.legend()
     plt.grid(alpha=0.5)
     st.pyplot(plt)
-  
